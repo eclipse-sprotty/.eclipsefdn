@@ -97,6 +97,28 @@ orgs.newOrg('eclipse-sprotty') {
         actions_can_approve_pull_request_reviews: false,
       },
     },
+    orgs.newRepo('sprotty-previews') {
+      default_branch: "previews",
+      description: "Hosting PR previews for sprotty-website",
+      gh_pages_build_type: "legacy",
+      gh_pages_source_branch: "previews",
+      gh_pages_source_path: "/",
+      has_issues: false,
+      has_projects: false,
+      has_wiki: false,
+      web_commit_signoff_required: false,
+      workflows+: {
+        actions_can_approve_pull_request_reviews: false,
+      },
+      environments: [
+        orgs.newEnvironment('github-pages') {
+          branch_policies+: [
+            "previews"
+          ],
+          deployment_branch_policy: "selected",
+        },
+      ],
+    },
     orgs.newRepo('sprotty-website') {
       allow_merge_commit: true,
       allow_update_branch: false,
@@ -122,6 +144,11 @@ orgs.newOrg('eclipse-sprotty') {
             "main"
           ],
           deployment_branch_policy: "selected",
+        },
+      ],
+      secrets: [
+        orgs.newRepoSecret('DEPLOY_PREVIEW_TOKEN') {
+          value: "pass:bots/ecd.sprotty/github.com/preview-token",
         },
       ],
     },
