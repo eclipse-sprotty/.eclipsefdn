@@ -32,9 +32,25 @@ orgs.newOrg('eclipse-sprotty') {
         "web"
       ],
       web_commit_signoff_required: false,
-      workflows+: {
-        actions_can_approve_pull_request_reviews: false,
-      },
+    },
+    orgs.newRepo('sprotty-previews') {
+      default_branch: "previews",
+      description: "Hosting PR previews for sprotty-website",
+      gh_pages_build_type: "legacy",
+      gh_pages_source_branch: "previews",
+      gh_pages_source_path: "/",
+      has_issues: false,
+      has_projects: false,
+      has_wiki: false,
+      web_commit_signoff_required: false,
+      environments: [
+        orgs.newEnvironment('github-pages') {
+          branch_policies+: [
+            "previews"
+          ],
+          deployment_branch_policy: "selected",
+        },
+      ],
     },
     orgs.newRepo('sprotty-server') {
       allow_merge_commit: true,
@@ -53,9 +69,6 @@ orgs.newOrg('eclipse-sprotty') {
         "server"
       ],
       web_commit_signoff_required: false,
-      workflows+: {
-        actions_can_approve_pull_request_reviews: false,
-      },
     },
     orgs.newRepo('sprotty-theia') {
       allow_merge_commit: true,
@@ -74,9 +87,6 @@ orgs.newOrg('eclipse-sprotty') {
         "theia"
       ],
       web_commit_signoff_required: false,
-      workflows+: {
-        actions_can_approve_pull_request_reviews: false,
-      },
     },
     orgs.newRepo('sprotty-vscode') {
       allow_merge_commit: true,
@@ -90,31 +100,6 @@ orgs.newOrg('eclipse-sprotty') {
       secret_scanning: "disabled",
       secret_scanning_push_protection: "disabled",
       web_commit_signoff_required: false,
-      workflows+: {
-        actions_can_approve_pull_request_reviews: false,
-      },
-    },
-    orgs.newRepo('sprotty-previews') {
-      default_branch: "previews",
-      description: "Hosting PR previews for sprotty-website",
-      gh_pages_build_type: "legacy",
-      gh_pages_source_branch: "previews",
-      gh_pages_source_path: "/",
-      has_issues: false,
-      has_projects: false,
-      has_wiki: false,
-      web_commit_signoff_required: false,
-      workflows+: {
-        actions_can_approve_pull_request_reviews: false,
-      },
-      environments: [
-        orgs.newEnvironment('github-pages') {
-          branch_policies+: [
-            "previews"
-          ],
-          deployment_branch_policy: "selected",
-        },
-      ],
     },
     orgs.newRepo('sprotty-website') {
       allow_merge_commit: true,
@@ -132,9 +117,11 @@ orgs.newOrg('eclipse-sprotty') {
         "website"
       ],
       web_commit_signoff_required: false,
-      workflows+: {
-        actions_can_approve_pull_request_reviews: false,
-      },
+      secrets: [
+        orgs.newRepoSecret('DEPLOY_PREVIEW_TOKEN') {
+          value: "pass:bots/ecd.sprotty/github.com/preview-token",
+        },
+      ],
       environments: [
         orgs.newEnvironment('github-pages') {
           branch_policies+: [
@@ -142,12 +129,7 @@ orgs.newOrg('eclipse-sprotty') {
           ],
           deployment_branch_policy: "selected",
         },
-        orgs.newEnvironment('pull-request-preview') {},
-      ],
-      secrets: [
-        orgs.newRepoSecret('DEPLOY_PREVIEW_TOKEN') {
-          value: "pass:bots/ecd.sprotty/github.com/preview-token",
-        },
+        orgs.newEnvironment('pull-request-preview'),
       ],
     },
   ],
