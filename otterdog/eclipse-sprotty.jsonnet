@@ -20,8 +20,6 @@ orgs.newOrg('eclipse-sprotty') {
       description: "A diagramming framework for the web",
       has_projects: false,
       homepage: "https://sprotty.org/",
-      secret_scanning: "disabled",
-      secret_scanning_push_protection: "disabled",
       topics+: [
         "diagrams",
         "eclipse",
@@ -59,8 +57,6 @@ orgs.newOrg('eclipse-sprotty') {
       dependabot_security_updates_enabled: true,
       description: "Server implementation for the Sprotty diagramming framework",
       homepage: "https://eclipse.org/sprotty",
-      secret_scanning: "disabled",
-      secret_scanning_push_protection: "disabled",
       topics+: [
         "diagrams",
         "eclipse",
@@ -77,8 +73,6 @@ orgs.newOrg('eclipse-sprotty') {
       dependabot_security_updates_enabled: true,
       description: "Integration of Sprotty diagrams into Theia IDE",
       homepage: "https://eclipse.org/sprotty",
-      secret_scanning: "disabled",
-      secret_scanning_push_protection: "disabled",
       topics+: [
         "diagrams",
         "eclipse",
@@ -96,8 +90,6 @@ orgs.newOrg('eclipse-sprotty') {
       description: "sprotty-vscode",
       has_projects: false,
       has_wiki: false,
-      secret_scanning: "disabled",
-      secret_scanning_push_protection: "disabled",
       web_commit_signoff_required: false,
     },
     orgs.newRepo('sprotty-website') {
@@ -107,8 +99,6 @@ orgs.newOrg('eclipse-sprotty') {
       description: "Sprotty project website",
       gh_pages_build_type: "workflow",
       homepage: "https://sprotty.org/",
-      secret_scanning: "disabled",
-      secret_scanning_push_protection: "disabled",
       topics+: [
         "diagrams",
         "documentation",
