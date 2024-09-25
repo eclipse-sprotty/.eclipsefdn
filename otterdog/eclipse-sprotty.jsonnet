@@ -17,6 +17,7 @@ orgs.newOrg('eclipse-sprotty') {
       delete_branch_on_merge: false,
       dependabot_security_updates_enabled: true,
       description: "A diagramming framework for the web",
+      has_discussions: true,
       has_projects: false,
       homepage: "https://sprotty.org/",
       topics+: [
@@ -55,6 +56,8 @@ orgs.newOrg('eclipse-sprotty') {
       delete_branch_on_merge: false,
       dependabot_security_updates_enabled: true,
       description: "Server implementation for the Sprotty diagramming framework",
+      has_projects: false,
+      has_wiki: false,
       homepage: "https://eclipse.org/sprotty",
       topics+: [
         "diagrams",
@@ -71,6 +74,8 @@ orgs.newOrg('eclipse-sprotty') {
       delete_branch_on_merge: false,
       dependabot_security_updates_enabled: true,
       description: "Integration of Sprotty diagrams into Theia IDE",
+      has_projects: false,
+      has_wiki: false,
       homepage: "https://eclipse.org/sprotty",
       topics+: [
         "diagrams",
@@ -97,6 +102,8 @@ orgs.newOrg('eclipse-sprotty') {
       delete_branch_on_merge: false,
       description: "Sprotty project website",
       gh_pages_build_type: "workflow",
+      has_projects: false,
+      has_wiki: false,
       homepage: "https://sprotty.org/",
       topics+: [
         "diagrams",
