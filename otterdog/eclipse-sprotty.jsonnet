@@ -1,6 +1,6 @@
 local orgs = import 'vendor/otterdog-defaults/otterdog-defaults.libsonnet';
 
-orgs.newOrg('eclipse-sprotty') {
+orgs.newOrg('ecd.sprotty', 'eclipse-sprotty') {
   settings+: {
     description: "",
     name: "Eclipse Sprotty™",
