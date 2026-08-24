@@ -29,6 +29,24 @@ orgs.newOrg('ecd.sprotty', 'eclipse-sprotty') {
         "web"
       ],
       web_commit_signoff_required: false,
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('main') {
+          required_approving_review_count: 1,
+        },
+      ],
+      environments: [
+        // Used by the publish.yml workflow to release packages
+        orgs.newEnvironment('publish') {
+          reviewers+: [
+            "@eclipse-sprotty/ecd-sprotty-committers"
+          ],
+          deployment_branch_policy: "selected",
+          branch_policies+: [
+            "main",
+            "maintenance/*"
+          ],
+        },
+      ],
     },
     orgs.newRepo('sprotty-previews') {
       default_branch: "previews",
@@ -95,6 +113,24 @@ orgs.newOrg('ecd.sprotty', 'eclipse-sprotty') {
       has_projects: false,
       has_wiki: false,
       web_commit_signoff_required: false,
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('main') {
+          required_approving_review_count: 1,
+        },
+      ],
+      environments: [
+        // Used by the publish.yml workflow to release packages
+        orgs.newEnvironment('publish') {
+          reviewers+: [
+            "@eclipse-sprotty/ecd-sprotty-committers"
+          ],
+          deployment_branch_policy: "selected",
+          branch_policies+: [
+            "main",
+            "maintenance/*"
+          ],
+        },
+      ],
     },
     orgs.newRepo('sprotty-website') {
       allow_merge_commit: true,
@@ -112,6 +148,11 @@ orgs.newOrg('ecd.sprotty', 'eclipse-sprotty') {
         "website"
       ],
       web_commit_signoff_required: false,
+      branch_protection_rules: [
+        orgs.newBranchProtectionRule('main') {
+          required_approving_review_count: 1,
+        },
+      ],
       secrets: [
         orgs.newRepoSecret('DEPLOY_PREVIEW_TOKEN') {
           value: "pass:bots/ecd.sprotty/github.com/preview-token",
