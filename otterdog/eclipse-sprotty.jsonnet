@@ -30,7 +30,7 @@ orgs.newOrg('ecd.sprotty', 'eclipse-sprotty') {
       ],
       web_commit_signoff_required: false,
       branch_protection_rules: [
-        orgs.newBranchProtectionRule('main') {
+        orgs.newBranchProtectionRule('master') {
           required_approving_review_count: 1,
         },
       ],
@@ -42,8 +42,8 @@ orgs.newOrg('ecd.sprotty', 'eclipse-sprotty') {
           ],
           deployment_branch_policy: "selected",
           branch_policies+: [
-            "main",
-            "maintenance/*"
+            "master",
+            "maintenance-*"
           ],
         },
       ],
@@ -114,7 +114,7 @@ orgs.newOrg('ecd.sprotty', 'eclipse-sprotty') {
       has_wiki: false,
       web_commit_signoff_required: false,
       branch_protection_rules: [
-        orgs.newBranchProtectionRule('main') {
+        orgs.newBranchProtectionRule('master') {
           required_approving_review_count: 1,
         },
       ],
@@ -126,8 +126,8 @@ orgs.newOrg('ecd.sprotty', 'eclipse-sprotty') {
           ],
           deployment_branch_policy: "selected",
           branch_policies+: [
-            "main",
-            "maintenance/*"
+            "master",
+            "maintenance-*"
           ],
         },
       ],
