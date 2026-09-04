@@ -13,7 +13,7 @@ orgs.newOrg('ecd.sprotty', 'eclipse-sprotty') {
     orgs.newRepo('sprotty') {
       allow_merge_commit: true,
       allow_update_branch: false,
-      default_branch: "master",
+      default_branch: "main",
       delete_branch_on_merge: false,
       dependabot_security_updates_enabled: true,
       description: "A diagramming framework for the web",
